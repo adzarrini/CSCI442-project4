@@ -8,8 +8,12 @@
 #pragma once
 #include "process/process.h"
 #include "virtual_address/virtual_address.h"
+#include "flag_parser/flag_parser.h"
 #include <cstdlib>
-
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <cassert>
 
 /**
  * Class responsible for running the memory simulation.
@@ -22,6 +26,11 @@ public:
    * The maximum number of frames in the simulated system (512).
    */
   static const size_t NUM_FRAMES = 1 << 9;
+
+  /*
+   * Flags associated to the file. This is for the input file as well.
+   */
+  FlagOptions flags;
 
 // PUBLIC API METHODS
 public:

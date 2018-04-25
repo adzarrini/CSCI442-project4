@@ -5,6 +5,8 @@
  */
 
 #include <cstdlib>
+#include "flag_parser/flag_parser.h"
+#include "simulation/simulation.h"
 
 using namespace std;
 
@@ -14,5 +16,11 @@ using namespace std;
  */
 int main(int argc, char** argv) {
   // TODO: implement me
+	Simulation sim;
+	FlagOptions flags;
+
+	if(parse_flags(argc, argv, flags)) sim.flags = flags;
+	sim.run();
+
   return EXIT_SUCCESS;
 }

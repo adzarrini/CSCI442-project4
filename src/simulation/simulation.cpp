@@ -12,6 +12,36 @@ using namespace std;
 
 void Simulation::run() {
   // TODO: implement me
+	string fileName = flags.filename;
+	ifstream in(fileName);
+	if(!in) exit(EXIT_FAILURE);
+
+	size_t numProcess;
+	in >> numProcess;
+	int proc;
+	string fName;
+	for(size_t i = 0; i < numProcess; i++) {
+		in >> proc >> fName;
+		ifstream pin(fName);
+		if(!pin) exit(EXIT_FAILURE);
+		Process *process = Process::read_from_input(pin);
+		pin.close();
+
+		cout << "PID: " << proc
+				 << "\tBytes size: " << process->size()
+				 << endl;
+	}
+
+	cout << endl;
+
+	string address;
+	while(in) {
+		in >> proc >> address;
+		VirtualAddress virtual_address = VirtualAddress::from_string(proc, address);
+		cout << virtual_address << endl;
+	}
+
+	in.close();
 }
 
 
