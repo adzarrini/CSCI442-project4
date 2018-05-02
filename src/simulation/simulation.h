@@ -8,12 +8,18 @@
 #pragma once
 #include "process/process.h"
 #include "virtual_address/virtual_address.h"
+#include "physical_address/physical_address.h"
 #include "flag_parser/flag_parser.h"
+#include "page_table/page_table.h"
+#include "frame/frame.h"
 #include <cstdlib>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <cassert>
+#include <map>
+#include <deque>
 
 /**
  * Class responsible for running the memory simulation.
@@ -31,8 +37,8 @@ public:
    * Flags associated to the file. This is for the input file as well.
    */
   FlagOptions flags;
-
-// PUBLIC API METHODS
+  
+  // PUBLIC API METHODS
 public:
 
   /**
@@ -58,5 +64,13 @@ private:
 
 // INSTANCE VARIABLES
 private:
+  
+  std::map<int, Process*> processes;
+
+  size_t free_frames = NUM_FRAMES;
+
+  size_t page_faults = 0;
+
+  size_t memory_accesses = 0;
 
 };
