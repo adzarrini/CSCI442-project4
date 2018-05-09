@@ -33,3 +33,8 @@ Created inputs/sim_3 for Belady's anomaly.
 
 
 Help from other classmates was essential in finishing this project. Main collaborator: Tylear Quast. Assistance from other students in alamode as well. 
+
+# Graded 
+ * final deliverable score: 180/180
+ * total score: 200/200 
+
